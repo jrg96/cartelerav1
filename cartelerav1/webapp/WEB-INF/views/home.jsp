@@ -10,12 +10,30 @@
 <title>Bienvenido a cineapp</title>
 </head>
 <body>
-	<h1>Lista de peliculas</h1>
+	<h1>Tabla de peliculas</h1>
 	
-	<ul>
-		<c:forEach items="${peliculas}" var="pelicula">
-			<li>${pelicula}</li>
-		</c:forEach>
-	</ul>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titulo</th>
+				<th>Duracion</th>
+				<th>Clasificacion</th>
+				<th>Genero</th>	
+			</tr>		
+		</thead>
+		
+		<tbody>
+			<c:forEach items="${peliculas}" var="pelicula">
+				<tr>
+					<td>${pelicula.id}</td>
+					<td>${pelicula.titulo}</td>
+					<td>${pelicula.duracion}</td>
+					<td>${pelicula.clasificacion}</td>
+					<td>${pelicula.genero}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>
