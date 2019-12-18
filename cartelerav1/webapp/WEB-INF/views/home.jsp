@@ -82,25 +82,35 @@
 
 		<br /> <br />
 		<div class="row page-header">
-			<div class="col-lg-12">
+			<div class="col-lg-12 col-sm-12 col-xs-12">
 				<h2 class="text text-center">
 					<span class="badge badge-success">EN CARTELERA</span>
 				</h2>
-				<br />
-				<form class="form-inline" action="#" method="post">
-					<div class="form-group">
-						<label for="fecha">Fecha: </label> <select id="fecha" name="fecha"
-							class="form-control">
-							<option value="01-05-2017">01-05-2017</option>
-							<option value="02-05-2017">02-05-2017</option>
-							<option value="03-05-2017">03-05-2017</option>
-							<option value="04-05-2017">04-05-2017</option>
-						</select>
-					</div>
-					<button type="submit" class="btn btn-primary">Filtrar</button>
-				</form>
 			</div>
 		</div>
+		
+		<br />
+		<form action="#" method="post">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="form-group row">
+						<label for="fecha" class="col-sm-2 col-form-label">Fecha: </label>
+						<div class="col-sm-10"> 
+							<select id="fecha" name="fecha"
+								class="form-control">
+								<option value="01-05-2017">01-05-2017</option>
+								<option value="02-05-2017">02-05-2017</option>
+								<option value="03-05-2017">03-05-2017</option>
+								<option value="04-05-2017">04-05-2017</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+					<button type="submit" class="btn btn-primary btn-block">Filtrar</button>
+				</div>
+			</div>
+		</form>
 		<br /> <br />
 
 		<!-- Marketing messaging -->
