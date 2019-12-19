@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PeliculaController 
 {
 	
-	@RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
-	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula)
+	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
+	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha)
 	{
 		String tituloPelicula = "Buscando a Dory";
 		int duracionMin = 120;

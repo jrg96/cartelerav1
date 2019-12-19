@@ -81,10 +81,9 @@
 						<div class="col-sm-10"> 
 							<select id="fecha" name="fecha"
 								class="form-control">
-								<option value="01-05-2017">01-05-2017</option>
-								<option value="02-05-2017">02-05-2017</option>
-								<option value="03-05-2017">03-05-2017</option>
-								<option value="04-05-2017">04-05-2017</option>
+								<c:forEach items="${fechas}" var="fecha">
+									<option value="${fecha}">${fecha}</option>
+								</c:forEach>
 							</select>
 						</div>
 					</div>
@@ -111,7 +110,7 @@
 								class="badge badge-secondary">${pelicula.genero}</span>
 						</h5>
 						<p>
-							<a class="btn btn-sm btn-primary" href="detail/${pelicula.id}" role="button">Consulta
+							<a class="btn btn-sm btn-primary" href="detail/${pelicula.id}/${fechaBusqueda}" role="button">Consulta
 								Horarios &raquo;</a>
 						</p>
 					</div>
