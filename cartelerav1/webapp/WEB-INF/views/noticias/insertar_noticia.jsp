@@ -32,7 +32,7 @@
 
     <div class="container theme-showcase" role="main">
 
-      <h3 class="blog-title"><span class="label label-success">Datos de la Noticia</span></h3>
+      <h3 class="blog-title"><span class="badge badge-success">Datos de la Noticia</span></h3>
 
       <form>
         <div class="row">         
