@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cartelerav1.app.model.Pelicula;
 import com.cartelerav1.app.util.Utileria;
@@ -34,6 +35,19 @@ public class HomeController
 		model.addAttribute("fechas", fechas);
 		model.addAttribute("peliculas", peliculas);
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
+		return "home";
+	}
+	
+	@RequestMapping(value="/search", method=RequestMethod.POST)
+	public String buscar(Model model, @RequestParam("fecha") String fecha)
+	{
+		List<Pelicula> peliculas = getListaPeli();
+		List<String> fechas = Utileria.getNextDays(4);
+		
+		model.addAttribute("fechas", fechas);
+		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("fechaBusqueda", fecha);
+		
 		return "home";
 	}
 	

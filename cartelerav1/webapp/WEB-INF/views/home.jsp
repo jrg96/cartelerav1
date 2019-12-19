@@ -8,6 +8,7 @@
 <!-- Tag para la libreria de spring y el uso de URL relativa -->
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <spring:url value="/resources" var="urlPublic" />
+<spring:url value="/" var="urlRoot" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +74,7 @@
 		</div>
 		
 		<br />
-		<form action="#" method="post">
+		<form action="${urlRoot}search" method="post">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="form-group row">
@@ -82,7 +83,14 @@
 							<select id="fecha" name="fecha"
 								class="form-control">
 								<c:forEach items="${fechas}" var="fecha">
-									<option value="${fecha}">${fecha}</option>
+									<c:choose>
+										<c:when test="${fecha eq fechaBusqueda}">
+											<option value="${fecha}" selected>${fecha}</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${fecha}">${fecha}</option>
+										</c:otherwise>
+									</c:choose>
 								</c:forEach>
 							</select>
 						</div>
