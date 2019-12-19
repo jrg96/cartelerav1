@@ -24,24 +24,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-		<a class="navbar-brand" href="#">Cine app</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarsExampleDefault"
-			aria-controls="navbarsExampleDefault" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Acerca
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-			</ul>
-		</div>
-	</nav>
+	<jsp:include page="include/menu.jsp"></jsp:include>
 
 	<div class="container theme-showcase" role="main">
 
@@ -210,16 +193,7 @@
 
 		</div>
 
-		<!-- FOOTER -->
-		<footer>
-			<p class="pull-right">
-				<a href="#">Back to top</a>
-			</p>
-			<p>
-				&copy; 2017 Cine app, Inc. &middot; <a href="#">Privacy</a> &middot;
-				<a href="#">Terms</a>
-			</p>
-		</footer>
+		<jsp:include page="include/footer.jsp"></jsp:include>
 
 	</div>
 	<!-- /container -->
