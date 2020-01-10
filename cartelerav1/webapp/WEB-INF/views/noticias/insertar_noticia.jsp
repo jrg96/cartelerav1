@@ -32,7 +32,7 @@
 
     <div class="container theme-showcase" role="main">
       <!-- INICIO DESPLIEGUE DE ERRORES BINDING -->
-      <spring:hasBindErrors name="pelicula">
+      <spring:hasBindErrors name="noticia">
           <div class="alert alert-danger" role="alert">
       	      Por favor corrija los siguientes errores:
       	      <ul>
