@@ -31,6 +31,18 @@
     <jsp:include page="../include/menu.jsp"></jsp:include>
 
     <div class="container theme-showcase" role="main">
+      <!-- INICIO DESPLIEGUE DE ERRORES BINDING -->
+      <spring:hasBindErrors name="pelicula">
+          <div class="alert alert-danger" role="alert">
+      	      Por favor corrija los siguientes errores:
+      	      <ul>
+      	      	  <c:forEach var="error" items="${errors.allErrors}">
+      	      	      <li><spring:message message="${error}" /></li>
+      	      	  </c:forEach>
+      	      </ul>
+      	  </div>
+      </spring:hasBindErrors>
+      <!-- FIN DESPLIEGUE DE ERRORES BINDING -->
 
       <h3 class="blog-title"><span class="badge badge-success">Datos de la Noticia</span></h3>
 
