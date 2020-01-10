@@ -2,6 +2,8 @@ package com.cartelerav1.app.model;
 
 import java.util.Date;
 
+import org.springframework.core.style.ToStringCreator;
+
 public class Pelicula 
 {
 	private int id;
@@ -94,9 +96,17 @@ public class Pelicula
 	}
 
 	@Override
-	public String toString() {
-		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", clasificacion="
-				+ clasificacion + ", genero=" + genero + ", imagen=" + imagen + ", fechaEstreno=" + fechaEstreno
-				+ ", estatus=" + estatus + "]";
+	public String toString()
+	{
+		return new ToStringCreator(this)
+				.append("id", this.getId())
+				.append("titulo", this.getTitulo())
+				.append("duracion", this.getDuracion())
+				.append("clasificacion", this.getClasificacion())
+				.append("genero", this.getGenero())
+				.append("imagen", this.getImagen())
+				.append("fechaEstreno", this.getFechaEstreno())
+				.append("estatus", this.getEstatus())
+				.toString();
 	}	
 }

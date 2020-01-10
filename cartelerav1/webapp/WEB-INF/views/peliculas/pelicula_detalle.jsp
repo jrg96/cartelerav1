@@ -28,7 +28,7 @@
 	<body>
 
 	<!-- Fixed navbar -->
-	<jsp:include page="include/menu.jsp"></jsp:include>
+	<jsp:include page="../include/menu.jsp"></jsp:include>
 
 		<div class="container theme-showcase" role="main">
 
@@ -153,7 +153,7 @@
 			<hr class="featurette-divider">
 
 			<!-- FOOTER -->
-			<jsp:include page="include/footer.jsp"></jsp:include>
+			<jsp:include page="../include/footer.jsp"></jsp:include>
 
 		</div> <!-- /container -->
 

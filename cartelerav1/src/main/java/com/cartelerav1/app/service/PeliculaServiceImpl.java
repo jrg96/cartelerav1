@@ -84,4 +84,11 @@ public class PeliculaServiceImpl implements IPeliculaService
 		return null;
 	}
 
+	@Override
+	public void guardar(Pelicula pelicula) 
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Insertando pelicula");
+	}
+
 }

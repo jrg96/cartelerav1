@@ -2,6 +2,8 @@ package com.cartelerav1.app.model;
 
 import java.util.Date;
 
+import org.springframework.core.style.ToStringCreator;
+
 public class Noticia 
 {
 	private int id;
@@ -64,5 +66,17 @@ public class Noticia
 	public void setEstatus(String estatus) 
 	{
 		this.estatus = estatus;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return new ToStringCreator(this)
+				.append("id", this.getId())
+				.append("titulo", this.getTitulo())
+				.append("fecha", this.getFecha())
+				.append("detalle", this.getDetalle())
+				.append("estatus", this.getEstatus())
+				.toString();
 	}
 }
