@@ -2,6 +2,8 @@ package com.cartelerav1.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +30,31 @@ public class NoticiaController
 	/*public String guardar(@RequestParam("titulo") String titulo, @RequestParam("estatus") String estatus, 
 			@RequestParam("detalle") String detalle)*/
 	@PostMapping(value="/save")
-	public String guardar(Noticia noticia)
+	public String guardar(Noticia noticia, BindingResult result)
 	
 	{		
-		// Realizar guardado a traves del servicio
+		/*
+		 * --------------- ZONA VERIFICACION DE ERRORES BINDING ---------------------
+		 */
+		System.out.println(noticia.toString());
+		
+		if (result.hasErrors())
+		{
+			System.out.println("Hubieron errores en el binding de noticia (Insertar)");
+			
+			for (ObjectError error : result.getAllErrors()) 
+			{
+				System.out.println(error.getDefaultMessage());
+			}
+			
+			return "noticias/noticia_insertar";
+		}
+		
+		/*
+		 * --------------- ZONA DE PROCESAMIENTO DE DATOS -------------------------
+		 */
 		this.noticiaService.guardar(noticia);
+		
 		
 		return "noticias/insertar_noticia";
 	}
