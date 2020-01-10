@@ -23,15 +23,14 @@ public class NoticiaController
 		return "noticias/insertar_noticia";
 	}
 	
+	
+	// Sin el uso de Data Binding, se tendria la siguiente linea
+	/*public String guardar(@RequestParam("titulo") String titulo, @RequestParam("estatus") String estatus, 
+			@RequestParam("detalle") String detalle)*/
 	@PostMapping(value="/save")
-	public String guardar(@RequestParam("titulo") String titulo, @RequestParam("estatus") String estatus, 
-			@RequestParam("detalle") String detalle)
-	{
-		Noticia noticia = new Noticia();
-		noticia.setTitulo(titulo);
-		noticia.setDetalle(detalle);
-		noticia.setEstatus(estatus);
-		
+	public String guardar(Noticia noticia)
+	
+	{		
 		// Realizar guardado a traves del servicio
 		this.noticiaService.guardar(noticia);
 		
