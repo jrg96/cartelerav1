@@ -49,7 +49,7 @@
 		<h3 class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
       </div>
 
-      <form action="${urlRoot}peliculas/save" method="POST">
+      <form action="${urlRoot}peliculas/save" method="POST" enctype="multipart/form-data">
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group">

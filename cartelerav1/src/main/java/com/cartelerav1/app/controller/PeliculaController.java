@@ -1,7 +1,10 @@
 package com.cartelerav1.app.controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cartelerav1.app.model.Pelicula;
@@ -56,7 +61,8 @@ public class PeliculaController
 	
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes)
+	public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes,
+			@RequestParam("archivoImagen") MultipartFile multiPart, HttpServletRequest request)
 	{
 		/*
 		 * --------------- ZONA VERIFICACION DE ERRORES BINDING ---------------------
@@ -65,7 +71,7 @@ public class PeliculaController
 		
 		if (result.hasErrors())
 		{
-			System.out.println("Hubieron errores en el binding de pelicula (Insertar)");
+			System.out.println("Hubieron errores en el binding de pelicula (insertar)");
 			
 			for (ObjectError error : result.getAllErrors()) 
 			{
@@ -78,6 +84,13 @@ public class PeliculaController
 		/*
 		 * --------------- ZONA DE PROCESAMIENTO DE DATOS -------------------------
 		 */
+		
+		// Verificando si el usuario subio imagen y realizar la subida
+		if (!multiPart.isEmpty())
+		{
+			String nombreImagen = guardarImagen(multiPart, request);
+			pelicula.setImagen(nombreImagen);
+		}
 		peliculaService.guardar(pelicula);
 		
 		
@@ -95,5 +108,37 @@ public class PeliculaController
 		// Definiendo el formato a ocupar para las fechas (para transoformarlas)
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(date, false));
+	}
+	
+	
+	/*
+	 * --------- FUNCIONES DE APOYO ---------------------------------------------
+	 */
+	private String guardarImagen(MultipartFile multiPart, HttpServletRequest request)
+	{
+		// Paso 1: obtener el nombre original del archivo
+		String nombreOriginal = multiPart.getOriginalFilename();
+		
+		// Paso 2: obtener la ruta absoluta a donde guardar las imagenes
+		// apache-tomcat/webapps/cartelerav1/resources/images/uploads
+		String rutaFinal = request.getServletContext().getRealPath("/resources/images/uploads/");
+		
+		// Paso 3: intentamos mover el archivo desde la carpeta tmp a su destino final
+		try 
+		{
+			System.out.println("Creando archivo");
+			File imageFile = new File(rutaFinal + nombreOriginal);
+			
+			System.out.println("Empezando a transferir");
+			multiPart.transferTo(imageFile);
+			
+			return nombreOriginal;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error al subir archivo: " + e.getMessage());
+		}
+		
+		return null;
 	}
 }
