@@ -3,8 +3,11 @@ package com.cartelerav1.app.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.cartelerav1.app.model.Banner;
 
+@Service
 public class BannerServiceImpl implements IBannerService
 {
 	private List<Banner> listaBanner;
