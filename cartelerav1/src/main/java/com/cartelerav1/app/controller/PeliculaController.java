@@ -56,8 +56,9 @@ public class PeliculaController
 	
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public String crear(@ModelAttribute Pelicula pelicula)
+	public String crear(@ModelAttribute Pelicula pelicula, Model model)
 	{
+		model.addAttribute("lista_generos", peliculaService.buscarGeneros());
 		return "peliculas/pelicula_insertar";
 	}
 	

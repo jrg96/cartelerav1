@@ -91,4 +91,22 @@ public class PeliculaServiceImpl implements IPeliculaService
 		System.out.println("Insertando pelicula");
 	}
 
+	@Override
+	public List<String> buscarGeneros() {
+		List<String> listaGeneros = new LinkedList<>();
+		
+		listaGeneros.add("Accion");
+		listaGeneros.add("Aventura");
+		listaGeneros.add("Clasicas");
+		listaGeneros.add("Comedia");
+		listaGeneros.add("Comedia Romantica");
+		listaGeneros.add("Drama");
+		listaGeneros.add("Terror");
+		listaGeneros.add("Infantil");
+		listaGeneros.add("Accion y Aventura");
+		listaGeneros.add("Romantica");
+		
+		return listaGeneros;
+	}
+
 }
