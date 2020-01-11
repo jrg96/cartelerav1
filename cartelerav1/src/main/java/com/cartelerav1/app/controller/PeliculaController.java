@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cartelerav1.app.model.Pelicula;
 import com.cartelerav1.app.service.IPeliculaService;
+import com.cartelerav1.app.util.Utileria;
 
 @Controller
 @RequestMapping(value = "/peliculas")
@@ -88,7 +89,7 @@ public class PeliculaController
 		// Verificando si el usuario subio imagen y realizar la subida
 		if (!multiPart.isEmpty())
 		{
-			String nombreImagen = guardarImagen(multiPart, request);
+			String nombreImagen = Utileria.guardarImagen(multiPart, request);
 			pelicula.setImagen(nombreImagen);
 		}
 		peliculaService.guardar(pelicula);
@@ -108,37 +109,5 @@ public class PeliculaController
 		// Definiendo el formato a ocupar para las fechas (para transoformarlas)
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(date, false));
-	}
-	
-	
-	/*
-	 * --------- FUNCIONES DE APOYO ---------------------------------------------
-	 */
-	private String guardarImagen(MultipartFile multiPart, HttpServletRequest request)
-	{
-		// Paso 1: obtener el nombre original del archivo
-		String nombreOriginal = multiPart.getOriginalFilename();
-		
-		// Paso 2: obtener la ruta absoluta a donde guardar las imagenes
-		// apache-tomcat/webapps/cartelerav1/resources/images/uploads
-		String rutaFinal = request.getServletContext().getRealPath("/resources/images/uploads/");
-		
-		// Paso 3: intentamos mover el archivo desde la carpeta tmp a su destino final
-		try 
-		{
-			System.out.println("Creando archivo");
-			File imageFile = new File(rutaFinal + nombreOriginal);
-			
-			System.out.println("Empezando a transferir");
-			multiPart.transferTo(imageFile);
-			
-			return nombreOriginal;
-		}
-		catch(Exception e)
-		{
-			System.out.println("Error al subir archivo: " + e.getMessage());
-		}
-		
-		return null;
 	}
 }
