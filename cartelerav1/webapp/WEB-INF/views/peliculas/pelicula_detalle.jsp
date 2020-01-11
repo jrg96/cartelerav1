@@ -52,8 +52,8 @@
 							<div class="card-body">                           
 								<p>
 									Título Original : ${pelicula.titulo} <br>
-									Actores : James McAvoy, Anya Taylor Joy, Betty Buckley, Brad William Henke <br>
-									Director: Night Shyamalan <br>                  
+									Actores : ${pelicula.detalle.actores} <br>
+									Director: ${pelicula.detalle.director} <br>                  
 									Clasificación: ${pelicula.clasificacion} <br>
 									Duración: ${pelicula.duracion} minutos <br>
 									Género: ${pelicula.genero} <br>                  
@@ -131,7 +131,7 @@
 							</div>
 							<div class="card-body">
 								<iframe width="100%" height="315" 
-												src="https://www.youtube.com/embed/HwDr7ff5GD4" >                          
+												src="${pelicula.detalle.trailer}" >                          
 								</iframe>
 							</div>
 						</div>           
@@ -142,7 +142,7 @@
 								<h3 class="card-title">SINOPSIS</h3>
 							</div>
 							<div class="card-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+								<p>${pelicula.detalle.sinopsis}</p>
 							</div>
 						</div>                          
 					</div>
