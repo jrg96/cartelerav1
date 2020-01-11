@@ -25,6 +25,18 @@ public class PeliculaController
 	@Autowired
 	private IPeliculaService peliculaService;
 	
+	
+	@RequestMapping(value="/index", method=RequestMethod.GET)
+	public String listaPelicula(Model model)
+	{
+		/*
+		 * --------------- ZONA DE PROCESAMIENTO DE DATOS -------------------------
+		 */
+		model.addAttribute("lista_peliculas", this.peliculaService.buscarTodas());
+		
+		return "peliculas/pelicula_lista";
+	}
+	
 	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
 	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha)
 	{
