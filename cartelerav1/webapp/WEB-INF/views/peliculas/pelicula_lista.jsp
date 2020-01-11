@@ -35,6 +35,13 @@
     <jsp:include page="../include/menu.jsp"></jsp:include>
 
     <div class="container theme-showcase" role="main">
+    	<!-- INICIO DESPLIEGUE MENSAJES -->
+    	<c:if test="${mensaje != null}">
+    		<div class="alert alert-success" role="alert">
+  				${mensaje}
+  			</div>
+    	</c:if>
+    	<!-- FIN DESPLIEGUE MENSAJES -->
 
       <h3>Listado de Peliculas</h3>
       

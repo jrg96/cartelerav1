@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cartelerav1.app.model.Pelicula;
 import com.cartelerav1.app.service.IPeliculaService;
@@ -55,7 +56,7 @@ public class PeliculaController
 	
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public String guardar(Pelicula pelicula, BindingResult result)
+	public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes)
 	{
 		/*
 		 * --------------- ZONA VERIFICACION DE ERRORES BINDING ---------------------
@@ -79,6 +80,8 @@ public class PeliculaController
 		 */
 		peliculaService.guardar(pelicula);
 		
+		
+		attributes.addFlashAttribute("mensaje", "Pelicula insertada con exito");
 		return "redirect:/peliculas/index";
 	}
 	
