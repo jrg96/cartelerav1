@@ -38,7 +38,7 @@
 	  
       <h3>Listado de imagenes del Banner</h3>
       
-      <a href="#" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
+      <a href="${urlRoot}banners/create" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
 
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
