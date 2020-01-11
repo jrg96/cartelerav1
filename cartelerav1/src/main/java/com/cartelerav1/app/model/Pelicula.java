@@ -15,6 +15,18 @@ public class Pelicula
 	private Date fechaEstreno;
 	private String estatus = "Activa";
 	
+	private Detalle detalle;
+	
+	
+	
+	public Detalle getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
+	}
+
 	public int getId() 
 	{
 		return id;
@@ -107,6 +119,7 @@ public class Pelicula
 				.append("imagen", this.getImagen())
 				.append("fechaEstreno", this.getFechaEstreno())
 				.append("estatus", this.getEstatus())
+				.append("detalle", this.getDetalle())
 				.toString();
 	}	
 }
