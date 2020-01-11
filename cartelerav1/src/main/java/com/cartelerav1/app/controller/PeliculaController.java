@@ -78,7 +78,8 @@ public class PeliculaController
 		 * --------------- ZONA DE PROCESAMIENTO DE DATOS -------------------------
 		 */
 		peliculaService.guardar(pelicula);
-		return "peliculas/pelicula_insertar";
+		
+		return "redirect:/peliculas/index";
 	}
 	
 	

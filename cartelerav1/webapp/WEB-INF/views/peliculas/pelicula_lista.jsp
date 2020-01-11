@@ -38,7 +38,7 @@
 
       <h3>Listado de Peliculas</h3>
       
-      <a href="#" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
+      <a href="${urlRoot}peliculas/create" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
 	
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
