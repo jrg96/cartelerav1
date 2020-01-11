@@ -41,18 +41,20 @@
 			</ol>
 			<!-- Image Size 1140 x 250 -->
 			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="${urlPublic}/images/slide1.jpg" alt="Slide" title="Some text">
-				</div>
-				<div class="carousel-item">
-					<img src="${urlPublic}/images/slide2.jpg" alt="Slide" title="Some text">
-				</div>
-				<div class="carousel-item">
-					<img src="${urlPublic}/images/slide3.jpg" alt="Slide" title="Some text">
-				</div>
-				<div class="carousel-item">
-					<img src="${urlPublic}/images/slide4.jpg" alt="Slide" title="Some text">
-				</div>
+				<c:forEach var="banner" items="${banners}" varStatus="status">
+					<c:choose>
+						<c:when test="${status.first}">
+							<div class="carousel-item active">
+								<img src="${urlPublic}/images/${banner.archivo}" alt="Slide" title="${banner.titulo}">
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="carousel-item">
+								<img src="${urlPublic}/images/${banner.archivo}" alt="Slide" title="${banner.titulo}">
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</div>
 			<a class="carousel-control-prev" href="#myCarousel" role="button"
 				data-slide="prev"> <span class="carousel-control-prev-icon"

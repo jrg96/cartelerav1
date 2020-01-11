@@ -31,15 +31,21 @@ public class BannerServiceImpl implements IBannerService
 			this.listaBanner.add(banner);
 			
 			banner = new Banner();
-			banner.setId(1);
+			banner.setId(3);
 			banner.setTitulo("Slide3");
 			banner.setArchivo("slide3.jpg");
 			this.listaBanner.add(banner);
 			
 			banner = new Banner();
-			banner.setId(1);
+			banner.setId(4);
 			banner.setTitulo("Slide4");
 			banner.setArchivo("slide4.jpg");
+			this.listaBanner.add(banner);
+			
+			banner = new Banner();
+			banner.setId(5);
+			banner.setTitulo("Slide4");
+			banner.setArchivo("slide5.jpg");
 			this.listaBanner.add(banner);
 		}
 		catch(Exception e)
