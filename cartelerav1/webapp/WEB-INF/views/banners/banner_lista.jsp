@@ -35,6 +35,13 @@
     <jsp:include page="../include/menu.jsp"></jsp:include>
 
     <div class="container theme-showcase" role="main">
+    	<!-- INICIO DESPLIEGUE MENSAJES -->
+    	<c:if test="${mensaje != null}">
+    		<div class="alert alert-success" role="alert">
+  				${mensaje}
+  			</div>
+    	</c:if>
+    	<!-- FIN DESPLIEGUE MENSAJES -->
 	  
       <h3>Listado de imagenes del Banner</h3>
       
@@ -86,6 +93,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <script src="${urlPublic}bootstrap/js/bootstrap.min.js"></script>     
+    <script src="${urlPublic}/bootstrap/js/bootstrap.min.js"></script>     
   </body>
 </html>
