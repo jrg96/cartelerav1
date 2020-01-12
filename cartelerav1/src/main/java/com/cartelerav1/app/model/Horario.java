@@ -1,17 +1,43 @@
 package com.cartelerav1.app.model;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.core.style.ToStringCreator;
 
+@Entity
+@Table(name = "Detalles")
 public class Horario 
 {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	
+	@Column(name = "fecha")
 	private Date fecha;
-	private String hora; // HH:mm
+	
+	@Column(name = "hora")
+	private Date hora; // HH:mm
+	
+	@Column(name = "sala")
 	private String sala; 
+	
+	@Column(name = "precio")
 	private double precio;
+	
+	@ManyToOne
+	@JoinColumn(name = "idpelicula")
 	private Pelicula pelicula;
 
 	public Horario() { }
@@ -32,11 +58,11 @@ public class Horario
 		this.fecha = fecha;
 	}
 
-	public String getHora() {
+	public Date getHora() {
 		return hora;
 	}
 
-	public void setHora(String hora) {
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
 
