@@ -49,4 +49,12 @@ public class NoticiaServiceJpa implements INoticiaService
 			this.noticiaRepository.deleteById(id);
 		}
 	}
+
+	@Override
+	public List<Noticia> obtenerNoticiasActivas() 
+	{
+		return this.noticiaRepository.findAllByEstatus("Activa", Sort.by("fecha").descending());
+	}
+	
+	
 }

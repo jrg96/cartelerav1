@@ -10,4 +10,6 @@ public interface INoticiaService
 	List<Noticia> buscarTodas();
 	Noticia buscarPorId(int id);
 	void eliminarPorId(int id);
+	
+	List<Noticia> obtenerNoticiasActivas();
 }
