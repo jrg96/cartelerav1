@@ -51,6 +51,8 @@
       </div>
 
       <form:form action="${urlRoot}peliculas/save" method="POST" enctype="multipart/form-data" modelAttribute="pelicula">
+      	<form:hidden path="id" />
+      	<form:hidden path="detalle.id" />
         <div class="row">
         	<div class="col-sm-3">
         		<img alt="" src="${urlPublic}/images/${pelicula.imagen}" width="150" height="200" />
