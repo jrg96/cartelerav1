@@ -51,7 +51,7 @@ public class Utileria {
 		
 		// Paso 2: obtener la ruta absoluta a donde guardar las imagenes
 		// apache-tomcat/webapps/cartelerav1/resources/images/uploads
-		String rutaFinal = request.getServletContext().getRealPath("/resources/images/uploads/");
+		String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
 		
 		// Paso 3: intentamos mover el archivo desde la carpeta tmp a su destino final
 		try 

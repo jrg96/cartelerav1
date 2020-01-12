@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cartelerav1.app.model.Pelicula;
+import com.cartelerav1.app.service.IDetalleService;
 import com.cartelerav1.app.service.IPeliculaService;
 import com.cartelerav1.app.util.Utileria;
 
@@ -32,6 +33,9 @@ public class PeliculaController
 {
 	@Autowired
 	private IPeliculaService peliculaService;
+	
+	@Autowired
+	private IDetalleService detalleService;
 	
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
@@ -94,6 +98,9 @@ public class PeliculaController
 			String nombreImagen = Utileria.guardarImagen(multiPart, request);
 			pelicula.setImagen(nombreImagen);
 		}
+		
+		// Para guardar pelicula, primero guardamos sus dependencias (sus FK)
+		detalleService.guardar(pelicula.getDetalle());
 		peliculaService.guardar(pelicula);
 		
 		
