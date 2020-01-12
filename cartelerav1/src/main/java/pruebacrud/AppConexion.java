@@ -1,4 +1,4 @@
-package pruebajpa;
+package pruebacrud;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
