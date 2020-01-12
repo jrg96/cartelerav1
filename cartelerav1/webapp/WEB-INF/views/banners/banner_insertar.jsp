@@ -59,6 +59,7 @@
          <h3 class="blog-title"><span class="label label-success">Datos de la imagen</span></h3>
 
          <form:form action="${urlRoot}banners/save" method="POST" enctype="multipart/form-data" modelAttribute="banner">
+         	<form:hidden path="id"/>
             <div class="row">         
                <div class="col-sm-6">
                   <div class="form-group">

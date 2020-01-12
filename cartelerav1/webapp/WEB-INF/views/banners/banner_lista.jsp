@@ -70,13 +70,13 @@
                 		<td><span class="badge badge-success">Activo</span></td>
                 	</c:when>
                 	<c:otherwise>
-                		<td><span class="badge badge-danger">Activo</span></td>
+                		<td><span class="badge badge-danger">Inactivo</span></td>
                 	</c:otherwise>
                 </c:choose>
                                          
                 <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><i class="fa fa-trash" aria-hidden="true"></i></span></a>
+                    <a href="${urlRoot}banners/edit/${banner.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+                    <a href="${urlRoot}banners/delete/${banner.id}" onclick="return confirm('Esta seguro que desea eliminar el banner?')" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><i class="fa fa-trash" aria-hidden="true"></i></span></a>
                 </td>
             </tr>
             </c:forEach>         

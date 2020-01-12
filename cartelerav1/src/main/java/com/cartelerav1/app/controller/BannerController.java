@@ -76,4 +76,19 @@ public class BannerController
 		attributes.addFlashAttribute("mensaje", "banner agregado con exito");
 		return "redirect:/banners/index";
 	}
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String modificarBanner(@PathVariable("id") int idBanner, Model model)
+	{
+		model.addAttribute("banner", this.bannerService.buscarPorId(idBanner));
+		return "banners/banner_insertar";
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String eliminarBanner(@PathVariable("id") int idBanner, RedirectAttributes attributes)
+	{
+		this.bannerService.eliminarPorId(idBanner);
+		attributes.addFlashAttribute("mensaje", "banner eliminado con exito");
+		return "redirect:/banners/index";
+	}
 }

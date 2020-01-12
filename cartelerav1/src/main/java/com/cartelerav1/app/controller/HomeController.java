@@ -47,7 +47,7 @@ public class HomeController
 		
 		model.addAttribute("fechas", fechas);
 		model.addAttribute("peliculas", peliculas);
-		model.addAttribute("banners", this.bannerService.obtenerTodos());
+		model.addAttribute("banners", this.bannerService.obtenerBannersActivos());
 		model.addAttribute("noticias", this.noticiaService.obtenerNoticiasActivas());
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		return "home";
