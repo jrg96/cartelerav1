@@ -18,4 +18,10 @@ public class DetalleServiceJPA implements IDetalleService
 		this.detalleRepository.save(detalle);
 	}
 
+	@Override
+	public void eliminarPorId(int id) 
+	{
+		this.detalleRepository.deleteById(id);
+	}
+
 }

@@ -10,4 +10,5 @@ public interface IPeliculaService
 	Pelicula buscarPorId(int id);
 	void guardar(Pelicula pelicula);
 	List<String> buscarGeneros();
+	void eliminarPorId(int id);
 }

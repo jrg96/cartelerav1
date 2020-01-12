@@ -109,4 +109,10 @@ public class PeliculaServiceImpl implements IPeliculaService
 		return listaGeneros;
 	}
 
+	@Override
+	public void eliminarPorId(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

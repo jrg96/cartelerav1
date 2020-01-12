@@ -117,6 +117,18 @@ public class PeliculaController
 	}
 	
 	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String eliminarPelicula(@PathVariable("id") int idPelicula, RedirectAttributes attributes)
+	{
+		Pelicula pelicula = this.peliculaService.buscarPorId(idPelicula);
+		
+		this.peliculaService.eliminarPorId(idPelicula);
+		this.detalleService.eliminarPorId(pelicula.getDetalle().getId());
+		attributes.addFlashAttribute("mensaje", "Pelicula eliminada con exito");
+		return "redirect:/peliculas/index";
+	}
+	
+	
 	/*
 	 * --------- REGLAS DE CONVERSION PARA EL CONTROLADOR ------------------------
 	 */

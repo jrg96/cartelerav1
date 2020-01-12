@@ -56,4 +56,10 @@ public class PeliculaServiceJPA implements IPeliculaService
 		return listaGeneros;
 	}
 
+	@Override
+	public void eliminarPorId(int id) 
+	{
+		this.peliculaRepository.deleteById(id);
+	}
+
 }
