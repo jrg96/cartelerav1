@@ -1,5 +1,6 @@
 package pruebaquery;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -34,6 +35,22 @@ public class AppFindBy {
 		}
 		
 		
+		// Buscando por fecha
+		System.out.println("------------------------------------------------------------");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try 
+		{
+			noticias = noticiaRepository.findAllByFecha(format.parse("2020-01-11"), PageRequest.of(0, 15));
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		for (Noticia noticia : noticias)
+		{
+			System.out.println(noticia.toString());
+		}
 		
 		context.close();
 
