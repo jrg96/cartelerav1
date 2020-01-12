@@ -27,13 +27,6 @@ public class AppFindAll {
 			System.out.println(pelicula.toString());
 		}
 		
-		List<Detalle> detalles = detalleRepository.findAll();
-		
-		for (Detalle detalle : detalles)
-		{
-			System.out.println(detalle.toString());
-		}
-		
 		context.close();
 	}
 
