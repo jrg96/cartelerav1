@@ -17,6 +17,10 @@ public interface NoticiaRepository extends JpaRepository<Noticia, Integer>
 	// SELECT * FROM noticias WHERE estatus = ?
 	List<Noticia> findByEstatus(String estatus);
 	
+	@Query(value = "SELECT * FROM noticias WHERE estatus = ? AND TO_DATE(fecha) = ?",
+		   nativeQuery = true)
+	List<Noticia> finByEstatusAndFecha(String estatus, Date fecha);
+	
 	// SELECT * FROM noticias WHERE estatus = ? and rownum <= ? 
 	List<Noticia> findAllByEstatus(String estatus, Pageable pageable);
 	

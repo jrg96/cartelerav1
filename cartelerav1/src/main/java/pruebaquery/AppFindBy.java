@@ -52,8 +52,26 @@ public class AppFindBy {
 			System.out.println(noticia.toString());
 		}
 		
+		
+		// BUscar por estatus y fecha
+		System.out.println("------------------------------------------------------------");
+		try 
+		{
+			noticias = noticiaRepository.finByEstatusAndFecha("Activa", format.parse("2020-01-11"));
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		for (Noticia noticia : noticias)
+		{
+			System.out.println(noticia.toString());
+		}
+		
+		
+		
 		context.close();
-
 	}
 
 }
