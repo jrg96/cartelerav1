@@ -5,10 +5,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.cartelerav1.app.model.Noticia;
 import com.cartelerav1.app.repository.NoticiaRepository;
 
+@Service
 public class NoticiaServiceJpa implements INoticiaService 
 {
 	@Autowired

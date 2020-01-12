@@ -2,12 +2,17 @@ package com.cartelerav1.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cartelerav1.app.model.Noticia;
 import com.cartelerav1.app.service.INoticiaService;
@@ -19,18 +24,23 @@ public class NoticiaController
 	@Autowired
 	private INoticiaService noticiaService;
 	
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String listaNoticia(Model model)
+	{
+		model.addAttribute("lista_noticias", this.noticiaService.buscarTodas());
+		return "noticias/noticia_lista";
+	}
+	
 	@GetMapping(value="/create")
-	public String crear()
+	public String crear(@ModelAttribute Noticia noticia)
 	{
 		return "noticias/insertar_noticia";
 	}
 	
 	
-	// Sin el uso de Data Binding, se tendria la siguiente linea
-	/*public String guardar(@RequestParam("titulo") String titulo, @RequestParam("estatus") String estatus, 
-			@RequestParam("detalle") String detalle)*/
 	@PostMapping(value="/save")
-	public String guardar(Noticia noticia, BindingResult result)
+	public String guardar(@ModelAttribute Noticia noticia, BindingResult result, RedirectAttributes attributes)
 	
 	{		
 		/*
@@ -47,7 +57,7 @@ public class NoticiaController
 				System.out.println(error.getDefaultMessage());
 			}
 			
-			return "noticias/noticia_insertar";
+			return "noticias/insertar_noticia";
 		}
 		
 		/*
@@ -56,6 +66,22 @@ public class NoticiaController
 		this.noticiaService.guardar(noticia);
 		
 		
+		attributes.addFlashAttribute("mensaje", "Noticia creada con exito");
+		return "redirect:/noticias/index";
+	}
+	
+	@RequestMapping(value = "/edit/{id}")
+	public String editarNoticia(@PathVariable("id") int idNoticia, Model model)
+	{
+		model.addAttribute("noticia", this.noticiaService.buscarPorId(idNoticia));
 		return "noticias/insertar_noticia";
+	}
+	
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public String eliminar(@PathVariable("id") int idNoticia, RedirectAttributes attributes)
+	{
+		this.noticiaService.eliminarPorId(idNoticia);
+		attributes.addFlashAttribute("mensaje", "Noticia eliminada con exito");
+		return "redirect:/noticias/index";
 	}
 }
