@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cartelerav1.app.model.Banner;
 
-@Service
+//@Service
 public class BannerServiceImpl implements IBannerService
 {
 	private List<Banner> listaBanner;

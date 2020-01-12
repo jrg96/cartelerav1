@@ -9,4 +9,6 @@ public interface IBannerService
 	void guardar(Banner banner);
 	List<Banner> obtenerTodos();
 	Banner buscarPorId(int id);
+	void eliminarPorId(int id);
+	List<Banner> obtenerBannersActivos();
 }
