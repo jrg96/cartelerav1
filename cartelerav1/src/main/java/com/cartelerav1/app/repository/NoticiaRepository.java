@@ -21,10 +21,10 @@ public interface NoticiaRepository extends JpaRepository<Noticia, Integer>
 		   nativeQuery = true)
 	List<Noticia> finByEstatusAndFecha(String estatus, Date fecha);
 	
-	// SELECT * FROM noticias WHERE estatus = ? and rownum <= ? 
+	
 	List<Noticia> findAllByEstatus(String estatus, Pageable pageable);
 	
-	// SELECT * FROM noticias WHERE estatus = ? AND titulo LIKE '?%' AND rownum rownum <= ? 
+	
 	List<Noticia> findAllByEstatusAndTituloStartingWith(String estatus, String titulo, Pageable pageable);
 	
 	// Oracle las fechas las guarda con el tiempo, asi que para buscar por fecha

@@ -2,19 +2,47 @@ package com.cartelerav1.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.springframework.core.style.ToStringCreator;
 
+@Entity
+@Table(name = "Peliculas")
 public class Pelicula 
 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	
+	@Column(name = "titulo")
 	private String titulo;
+	
+	@Column(name = "duracion")
 	private int duracion;
+	
+	@Column(name = "clasificacion")
 	private String clasificacion;
+	
+	@Column(name = "genero")
 	private String genero;
+	
+	@Column(name = "imagen")
 	private String imagen = "cinema.png";
+	
+	@Column(name = "fechaestreno")
 	private Date fechaEstreno;
+	
+	@Column(name = "estatus")
 	private String estatus = "Activa";
 	
+	@Transient
 	private Detalle detalle;
 	
 	
