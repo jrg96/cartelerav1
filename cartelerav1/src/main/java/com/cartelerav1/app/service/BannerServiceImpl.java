@@ -78,4 +78,16 @@ public class BannerServiceImpl implements IBannerService
 		return null;
 	}
 
+	@Override
+	public void eliminarPorId(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Banner> obtenerBannersActivos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
