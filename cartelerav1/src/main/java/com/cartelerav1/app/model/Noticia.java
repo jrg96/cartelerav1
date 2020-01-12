@@ -2,6 +2,7 @@ package com.cartelerav1.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +17,19 @@ public class Noticia
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	
+	@Column(name = "titulo")
 	private String titulo;
+	
+	@Column(name = "fecha")
 	private Date fecha;
+	
+	@Column(name = "detalle")
 	private String detalle;
+	
+	@Column(name = "estatus")
 	private String estatus;
 	
 	public Noticia()
