@@ -26,6 +26,9 @@
 			<li class="nav-item">
 				<a class="nav-link" href="${urlRoot}banners/index">Banners</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="${urlRoot}logout">Cerrar sesión</a>
+			</li>
 		</ul>
 	</div>
 </nav>

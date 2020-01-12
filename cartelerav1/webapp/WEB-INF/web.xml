@@ -18,6 +18,16 @@
 			<location>c:\temp</location>
 		</multipart-config>
 	</servlet>
+	
+	<!--Spring Security Filter -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
@@ -26,7 +36,10 @@
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+			/WEB-INF/spring/root-context.xml,
+			/WEB-INF/spring/security.xml
+		</param-value>
 	</context-param>
 	
 	<listener>
