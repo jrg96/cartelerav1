@@ -2,6 +2,7 @@ package com.cartelerav1.app.service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,17 @@ public class PeliculaServiceJPA implements IPeliculaService
 	
 	@Override
 	public List<Pelicula> buscarTodas() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.peliculaRepository.findAll();
 	}
 
 	@Override
 	public Pelicula buscarPorId(int id) {
-		// TODO Auto-generated method stub
+		Optional<Pelicula> peli =  this.peliculaRepository.findById(id);
+		
+		if (peli.isPresent())
+		{
+			return peli.get();
+		}
 		return null;
 	}
 

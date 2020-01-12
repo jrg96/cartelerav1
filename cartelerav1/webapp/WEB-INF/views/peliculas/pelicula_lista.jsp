@@ -76,7 +76,7 @@
 	                	</c:otherwise>
 	                </c:choose>
 	                <td>
-	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+	                    <a href="${urlRoot}peliculas/edit/${pelicula.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
 	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><i class="fa fa-trash" aria-hidden="true"></i></a>
 	                </td>
 	            </tr>

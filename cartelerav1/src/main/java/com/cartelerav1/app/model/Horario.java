@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.springframework.core.style.ToStringCreator;
 
 @Entity
-@Table(name = "Detalles")
+@Table(name = "Horarios")
 public class Horario 
 {
 	@Id

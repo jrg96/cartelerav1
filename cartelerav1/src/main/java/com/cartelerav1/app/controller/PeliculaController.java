@@ -108,6 +108,14 @@ public class PeliculaController
 		return "redirect:/peliculas/index";
 	}
 	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editarPelicula(@PathVariable("id") int idPelicula, Model model)
+	{
+		model.addAttribute("pelicula", this.peliculaService.buscarPorId(idPelicula));
+		model.addAttribute("lista_generos", this.peliculaService.buscarGeneros());
+		return "peliculas/pelicula_insertar";
+	}
+	
 	
 	/*
 	 * --------- REGLAS DE CONVERSION PARA EL CONTROLADOR ------------------------
