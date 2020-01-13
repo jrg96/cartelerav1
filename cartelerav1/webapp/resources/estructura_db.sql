@@ -113,8 +113,10 @@ CREATE TABLE Usuarios (
 	telefono varchar(50) NOT NULL
 );
 
-ALTER TABLE Usuarios ADD (
-  CONSTRAINT usuario2_perfil_pk PRIMARY KEY (cuenta));
+ALTER TABLE Usuarios ADD id NUMBER(11) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1);
+ALTER TABLE Usuarios ADD CONSTRAINT usuario2_perfil_pk PRIMARY KEY(id);
+ALTER TABLE Usuarios ADD CONSTRAINT unique_usuario_cuenta UNIQUE(cuenta);
+
   
 ----------------------------------------------------------------------------------
 CREATE TABLE Perfiles (
@@ -126,11 +128,15 @@ ALTER TABLE Perfiles
 ADD CONSTRAINT fk_usuarios_perfil
    FOREIGN KEY (cuenta)
    REFERENCES Usuarios (cuenta);
-
+   
+ALTER TABLE Perfiles ADD id NUMBER(11) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1);
+ALTER TABLE Perfiles ADD CONSTRAINT perfil_pk PRIMARY KEY(id);
 ALTER TABLE Perfiles ADD CONSTRAINT unique_authority UNIQUE(cuenta, perfil);
 
-INSERT INTO Usuarios VALUES ('luis','{noop}luis123',1,'luis@test.com','9856523');
-INSERT INTO Usuarios VALUES ('marisol','{noop}mari123',1,'marisol@example.com','9856482');
+INSERT INTO Usuarios(cuenta, pwd, activo, email, telefono) VALUES ('luis','$2a$10$O4zV8CJ.E6KyrwuRocn4ceIoYRB/AjwCA6BbGs98a3WW3GUiKXkZy',1,'luis@test.com','9856523'); --luis123
+INSERT INTO Usuarios(cuenta, pwd, activo, email, telefono) VALUES ('marisol','$2a$10$mJ3ltfE/mufJRbckAOEleOANckFB9NEStCH.cvB1GL53OwFm43o7y',1,'marisol@example.com','9856482'); --mari123
 
-INSERT INTO Perfiles VALUES ('luis','EDITOR');
-INSERT INTO Perfiles VALUES ('marisol','GERENTE');
+INSERT INTO Perfiles(cuenta, perfil) VALUES ('luis','EDITOR');
+INSERT INTO Perfiles(cuenta, perfil) VALUES ('marisol','GERENTE');
+
+COMMIT;
