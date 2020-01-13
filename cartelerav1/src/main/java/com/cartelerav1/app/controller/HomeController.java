@@ -68,16 +68,4 @@ public class HomeController
 		
 		return "home";
 	}
-	
-	/*
-	 * Formulario funcion para el cierre de sesion
-	 */
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String cierreSesion(HttpServletRequest request)
-	{
-		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
-		logoutHandler.logout(request, null, null);
-		
-		return "redirect:/login";
-	}
 }
