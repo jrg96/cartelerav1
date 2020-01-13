@@ -1,5 +1,6 @@
 package com.cartelerav1.app.service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,28 @@ public class PerfilServiceJpa implements IPerfilService
 	public Perfil buscarPorId(int id) 
 	{
 		Optional<Perfil> perfil = this.perfilRepository.findById(id);
+		if (perfil.isPresent())
+		{
+			return perfil.get();
+		}
+		return null;
+	}
+
+	@Override
+	public List<String> obtenerTiposPerfil() 
+	{
+		List<String> listaTipos = new LinkedList<>();
+		
+		listaTipos.add("EDITOR");
+		listaTipos.add("GERENTE");
+		
+		return listaTipos;
+	}
+
+	@Override
+	public Perfil buscarPorCuenta(String cuenta) 
+	{
+		Optional<Perfil> perfil = this.perfilRepository.findByCuenta(cuenta);
 		if (perfil.isPresent())
 		{
 			return perfil.get();

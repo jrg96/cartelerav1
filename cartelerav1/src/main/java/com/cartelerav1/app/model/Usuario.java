@@ -8,8 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Usuarios")
@@ -35,8 +38,20 @@ public class Usuario
 	@Column(name = "telefono")
 	private String telefono;
 	
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-	private List<Perfil> perfiles;
+	@Transient
+	@OneToOne
+	@JoinColumn(name = "cuenta", referencedColumnName = "cuenta", insertable = false, updatable = false)
+	private Perfil perfil;
+	
+	
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
 
 	public int getId() {
 		return id;

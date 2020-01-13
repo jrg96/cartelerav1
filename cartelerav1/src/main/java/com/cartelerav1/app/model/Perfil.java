@@ -18,13 +18,19 @@ public class Perfil
 	@Column(name = "id")
 	private int id;
 	
-	@ManyToOne
 	@JoinColumn(name = "cuenta")
-	private Usuario usuario;
+	private String cuenta;
 	
 	@Column(name = "perfil")
 	private String perfil;
 	
+	
+	public String getCuenta() {
+		return cuenta;
+	}
+	public void setCuenta(String cuenta) {
+		this.cuenta = cuenta;
+	}
 	public int getId() {
 		return id;
 	}

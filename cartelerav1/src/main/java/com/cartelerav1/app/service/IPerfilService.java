@@ -10,4 +10,8 @@ public interface IPerfilService
 	void eliminarPorId(int id);
 	List<Perfil> buscarTodos();
 	Perfil buscarPorId(int id);
+	Perfil buscarPorCuenta(String cuenta);
+	
+	List<String> obtenerTiposPerfil();
+	
 }
