@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <spring:url value="/" var="urlRoot" />
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -12,23 +13,26 @@
 
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-				<a class="nav-link" href="#">Acerca
-					<span class="sr-only">(current)</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Login</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="${urlRoot}peliculas/index">Peliculas</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="${urlRoot}banners/index">Banners</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="${urlRoot}logout">Cerrar sesión</a>
-			</li>
+			<sec:authorize access="isAnonymous()">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Acerca</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Login</a>
+				</li>
+			</sec:authorize>
+			
+			<sec:authorize access="hasAnyAuthority('EDITOR')" >
+				<li class="nav-item">
+					<a class="nav-link" href="${urlRoot}peliculas/index">Peliculas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${urlRoot}banners/index">Banners</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${urlRoot}logout">Cerrar sesión</a>
+				</li>
+			</sec:authorize>
 		</ul>
 	</div>
 </nav>
