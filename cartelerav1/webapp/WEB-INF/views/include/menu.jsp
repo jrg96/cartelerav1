@@ -18,7 +18,7 @@
 					<a class="nav-link" href="#">Acerca</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Login</a>
+					<a class="nav-link" href="${urlRoot}admin/loginform">Login</a>
 				</li>
 			</sec:authorize>
 			
@@ -30,7 +30,7 @@
 					<a class="nav-link" href="${urlRoot}banners/index">Banners</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${urlRoot}logout">Cerrar sesión</a>
+					<a class="nav-link" href="${urlRoot}admin/logout">Cerrar sesión</a>
 				</li>
 			</sec:authorize>
 		</ul>

@@ -104,3 +104,33 @@ ALTER TABLE UsuarioPerfil
 ADD CONSTRAINT fk_usuarios_perfil
    FOREIGN KEY (username)
    REFERENCES Usuarios (username);
+----------------------------------------------------------------------------------
+CREATE TABLE Usuarios (
+	cuenta varchar2(100) NOT NULL,
+	pwd varchar2(100) NOT NULL,
+	activo NUMBER(1) NOT NULL,
+	email varchar(100) NOT NULL,
+	telefono varchar(50) NOT NULL
+);
+
+ALTER TABLE Usuarios ADD (
+  CONSTRAINT usuario2_perfil_pk PRIMARY KEY (cuenta));
+  
+----------------------------------------------------------------------------------
+CREATE TABLE Perfiles (
+	cuenta varchar2(100) NOT NULL,
+	perfil varchar2(70) NOT NULL
+);
+
+ALTER TABLE Perfiles
+ADD CONSTRAINT fk_usuarios_perfil
+   FOREIGN KEY (cuenta)
+   REFERENCES Usuarios (cuenta);
+
+ALTER TABLE Perfiles ADD CONSTRAINT unique_authority UNIQUE(cuenta, perfil);
+
+INSERT INTO Usuarios VALUES ('luis','{noop}luis123',1,'luis@test.com','9856523');
+INSERT INTO Usuarios VALUES ('marisol','{noop}mari123',1,'marisol@example.com','9856482');
+
+INSERT INTO Perfiles VALUES ('luis','EDITOR');
+INSERT INTO Perfiles VALUES ('marisol','GERENTE');

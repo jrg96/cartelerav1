@@ -11,16 +11,15 @@
    <http auto-config="true" >
    		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR', 'GERENTE')" />
    		
-   		<form-login login-page="/loginform"/>
+   		<form-login login-page="/admin/loginform" default-target-url="/admin/index" />
    </http>
 
    <authentication-manager>
 
       <authentication-provider>
-		<user-service>
-		  <user name="luis" password="{noop}luis123" authorities="EDITOR" />		  
-		  <user name="marisol" password="{noop}mari123" authorities="GERENTE" />  
-		</user-service>
+		<jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="select cuenta,pwd,activo from Usuarios where cuenta = ?"
+			authorities-by-username-query="select cuenta,perfil from Perfiles where cuenta = ?" />
       </authentication-provider>
 
    </authentication-manager>
